@@ -2,11 +2,11 @@
 
 import { promises as fs } from "fs";
 import path from 'path'
-import fetch from 'node-fetch'
 import { fileURLToPath } from 'url';
 import Mustache from 'mustache'
 import moment from 'moment'
 import cache from 'persistent-cache'
+import 'isomorphic-fetch';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
