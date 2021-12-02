@@ -10,11 +10,9 @@ import cache from 'persistent-cache'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const nodePath = path.resolve(process.argv[1]);
-const modulePath = path.resolve(fileURLToPath(import.meta.url))
 const BACKEND_URL = "http://localhost:8080/"
 const DATA_CACHE = cache();
-const IS_CLI = nodePath === modulePath
+const IS_CLI = import.meta.url === `file://${process.argv[1]}`
 
 const getTemplate = application =>
 	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), 'UTF-8')
