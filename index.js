@@ -10,7 +10,7 @@ import cache from 'persistent-cache'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const BACKEND_URL = "http://localhost:8080/"
+const BACKEND_URL = "https://us-central1-kumux-color-scheme-333812.cloudfunctions.net/getColorScheme"
 const DATA_CACHE = cache();
 
 const getTemplate = application =>
