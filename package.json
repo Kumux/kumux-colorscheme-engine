@@ -1,6 +1,6 @@
 {
   "name": "@kumux/colorscheme-engine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Use the Kumux color scheme in your application",
   "main": "index.js",
   "type": "module",
@@ -24,6 +24,6 @@
     "persistent-cache": "^1.1.2"
   },
   "bin": {
-    "kumux-colorscheme": "./index.js"
+    "kumux-colorscheme": "./cli.js"
   }
 }

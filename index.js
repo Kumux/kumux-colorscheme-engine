@@ -12,7 +12,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const BACKEND_URL = "http://localhost:8080/"
 const DATA_CACHE = cache();
-const IS_CLI = import.meta.url === `file://${process.argv[1]}`
 
 const getTemplate = application =>
 	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), 'UTF-8')
@@ -63,10 +62,4 @@ export default async function getColorschemeSnapshot(application, settings) {
 	
 
 	return Mustache.render(template, themeVariables)
-}
-
-if (IS_CLI) {
-	getColorschemeSnapshot(process.argv[2], {}).then(data => {
-		process.stdout.write(data)
-	})
 }
