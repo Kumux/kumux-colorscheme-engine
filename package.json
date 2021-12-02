@@ -1,0 +1,19 @@
+{
+  "name": "kumux-colorscheme-engine",
+  "version": "0.0.0",
+  "description": "Use the Kumux color scheme in your application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kumux/kumux-colorscheme-engine.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kumux/kumux-colorscheme-engine/issues"
+  },
+  "homepage": "https://github.com/Kumux/kumux-colorscheme-engine#readme"
+}
