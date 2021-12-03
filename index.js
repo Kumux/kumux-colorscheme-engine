@@ -11,7 +11,9 @@ import 'isomorphic-fetch';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const BACKEND_URL = "https://us-central1-kumux-color-scheme-333812.cloudfunctions.net/getColorScheme"
-const DATA_CACHE = cache();
+const DATA_CACHE = cache({
+	base: __dirname
+});
 
 const getTemplate = application =>
 	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), 'UTF-8')
