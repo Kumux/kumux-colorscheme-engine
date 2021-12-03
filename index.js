@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import Mustache from 'mustache'
 import moment from 'moment'
 import cache from 'persistent-cache'
-import 'isomorphic-fetch';
+import fetch from 'cross-fetch';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
