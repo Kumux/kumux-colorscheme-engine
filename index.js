@@ -48,7 +48,7 @@ const getThemeVariables = async settings => {
 
 	const nonPastTimelineItems = timeline
 		.filter(([timestamp, _]) => {
-			return moment.unix(timestamp).isBefore(moment())
+			return moment.unix(timestamp).isAfter(moment())
 		})
 		.sort(([timestamp, _]) => timestamp)
 	const currentTimelineItem = nonPastTimelineItems[0]
