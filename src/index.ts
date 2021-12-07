@@ -13,7 +13,7 @@ type SettingsType = {}
 type ApplicationType = string
 type TimeStampItem = [number, string]
 
-const __filename = fileURLToPath(import.meta.url);
+// const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const BACKEND_URL = "https://us-central1-kumux-color-scheme-333812.cloudfunctions.net/getColorScheme"
 const DATA_CACHE = cache({
