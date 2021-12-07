@@ -19,7 +19,7 @@ const DATA_CACHE = cache({
 });
 
 const getTemplate = (application: ApplicationType) =>
-	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), { encoding: 'utf-8' })
+	fs.readFile(path.resolve(__dirname, '..', 'templates', `${application}.mustache`), { encoding: 'utf-8' })
 
 export const updateThemeData = async () => {
 	const lastFetch = moment.unix(DATA_CACHE.getSync('lastFetch'))  // TODO: consider actual timestamp items

@@ -1,6 +1,6 @@
 {
   "name": "@kumux/colorscheme-engine",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Use the Kumux color scheme in your application",
   "main": "dist/index.js",
   "scripts": {
