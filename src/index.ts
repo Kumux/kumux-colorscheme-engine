@@ -5,8 +5,13 @@ import path from 'path'
 import { fileURLToPath } from 'url';
 import Mustache from 'mustache'
 import moment from 'moment'
+// @ts-ignore
 import cache from 'persistent-cache'
 import fetch from 'cross-fetch';
+
+type SettingsType = {}
+type ApplicationType = string
+type TimeStampItem = [number, string]
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,11 +20,11 @@ const DATA_CACHE = cache({
 	base: __dirname
 });
 
-const getTemplate = application =>
-	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), 'UTF-8')
+const getTemplate = (application: ApplicationType) =>
+	fs.readFile(path.resolve(__dirname, 'templates', `${application}.mustache`), { encoding: 'utf-8' })
 
-const updateThemeData = async () => {
-	const lastFetch = moment.unix(DATA_CACHE.getSync('lastFetch'))
+export const updateThemeData = async () => {
+	const lastFetch = moment.unix(DATA_CACHE.getSync('lastFetch'))  // TODO: consider actual timestamp items
 	if (lastFetch.subtract(24, 'hours').isBefore(moment())) {
 		return null
 	}
@@ -28,7 +33,6 @@ const updateThemeData = async () => {
 
 	const { themeData } = themeDataResponseJSON
 	const { timeline, themeVariables } = themeData
-	DATA_CACHE.putSync("lastFetch", moment().unix())
 	DATA_CACHE.putSync("timeline", timeline)
 	DATA_CACHE.putSync("themeVariables", themeVariables)
 
@@ -43,14 +47,14 @@ const getThemeData = async () => {
 	return { timeline, themeVariables }
 }
 
-const getThemeVariables = async settings => {
+const getThemeVariables = async (settings: SettingsType) => {
 	const { timeline, themeVariables } = await getThemeData()
 
 	const nonPastTimelineItems = timeline
-		.filter(([timestamp, _]) => {
+		.filter(([timestamp, _]: TimeStampItem) => {
 			return moment.unix(timestamp).isAfter(moment())
 		})
-		.sort(([timestamp, _]) => timestamp)
+		.sort(([timestamp, _]: TimeStampItem) => timestamp)
 	const currentTimelineItem = nonPastTimelineItems[0]
 	const currentHash = currentTimelineItem[1]
 	const currentThemeVariables = themeVariables[currentHash]
@@ -58,8 +62,8 @@ const getThemeVariables = async settings => {
 	return currentThemeVariables
 }
 
-export default async function getColorschemeSnapshot(application, settings) {
-	const themeVariables = await getThemeVariables()
+export default async function getColorschemeSnapshot(application: ApplicationType, settings: SettingsType) {
+	const themeVariables = await getThemeVariables({})
 	const template = await getTemplate(application)
 	
 
