@@ -13,8 +13,6 @@ type SettingsType = {}
 type ApplicationType = string
 type TimeStampItem = [number, string]
 
-// const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const BACKEND_URL = "https://us-central1-kumux-color-scheme-333812.cloudfunctions.net/getColorScheme"
 const DATA_CACHE = cache({
 	base: __dirname
@@ -33,6 +31,7 @@ export const updateThemeData = async () => {
 
 	const { themeData } = themeDataResponseJSON
 	const { timeline, themeVariables } = themeData
+	DATA_CACHE.putSync("lastFetch", moment().unix())
 	DATA_CACHE.putSync("timeline", timeline)
 	DATA_CACHE.putSync("themeVariables", themeVariables)
 
