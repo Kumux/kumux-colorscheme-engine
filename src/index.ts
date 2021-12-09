@@ -9,14 +9,13 @@ import moment from 'moment'
 // @ts-ignore
 import cache from 'persistent-cache'
 import fetch from 'cross-fetch';
-import PRESETS from './presets'
-import initConfig from 'application-config'
+import getConfig from "./config";
 
-const systemConfig = initConfig("kumux")
 
 export type SettingsType = {
 	dayBackground?: string,
 	nightBackground?: string,
+	preset: string | null,
 }
 type ApplicationType = string
 type TimelineItem = [number, string]
@@ -108,18 +107,9 @@ const getThemeVariables = async (settings: SettingsType) => {
 }
 
 export default async function getColorschemeSnapshot(application: ApplicationType, settings: SettingsType) {
-	const currentSystemConfig = await systemConfig.read() as SettingsType
-	const themeVariables = await getThemeVariables({ 
-		...PRESETS["onedark"],
-		...settings,
-		...currentSystemConfig,
-	})
+	const themeVariables = await getThemeVariables(await getConfig(settings))
 	const template = await getTemplate(application)
 	
 
 	return Mustache.render(template, themeVariables)
-}
-
-export function getConfigPath() {
-	return systemConfig.filePath
 }
