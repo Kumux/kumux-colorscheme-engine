@@ -30,6 +30,8 @@
     "kumux-colorscheme": "dist/cli.js"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
     "@types/jest": "^27.0.3",
     "@types/mustache": "^4.1.2",
     "ts-node": "^10.4.0",
