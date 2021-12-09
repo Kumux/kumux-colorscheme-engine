@@ -10,6 +10,9 @@ import moment from 'moment'
 import cache from 'persistent-cache'
 import fetch from 'cross-fetch';
 import PRESETS from './presets'
+import initConfig from 'application-config'
+
+const systemConfig = initConfig("kumux")
 
 export type SettingsType = {
 	dayBackground?: string,
@@ -105,9 +108,18 @@ const getThemeVariables = async (settings: SettingsType) => {
 }
 
 export default async function getColorschemeSnapshot(application: ApplicationType, settings: SettingsType) {
-	const themeVariables = await getThemeVariables(PRESETS["onedark"])
+	const currentSystemConfig = await systemConfig.read() as SettingsType
+	const themeVariables = await getThemeVariables({ 
+		...PRESETS["onedark"],
+		...settings,
+		...currentSystemConfig,
+	})
 	const template = await getTemplate(application)
 	
 
 	return Mustache.render(template, themeVariables)
+}
+
+export function getConfigPath() {
+	return systemConfig.filePath
 }
