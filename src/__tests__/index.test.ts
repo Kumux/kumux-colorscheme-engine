@@ -59,9 +59,18 @@ describe('index.ts', () => {
 		})
 
 		it("updates when future timeline items are not available", () => {
-			FAKE_CACHE["timeline"] = []
+			FAKE_CACHE["timeline"] = [
+				[moment().subtract(3, "days").unix(), null]
+			]
 
 			expect(doesNeedUpdate(DEFAULT_CONFIG)).toBe(true)
+		})
+
+		it("updates when the configuration is changed ", () => {
+			expect(doesNeedUpdate({
+				...DEFAULT_CONFIG,
+				nightBackground: "foobaz"
+			})).toBe(true)
 		})
 	})
 

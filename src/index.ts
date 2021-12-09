@@ -37,6 +37,11 @@ export const doesNeedUpdate = (settings: SettingsType) => {
 	const lastFetch = moment.unix(DATA_CACHE.getSync('lastFetch'))
 	const oldestAcceptedLastFetch = moment().subtract(24, "hours")
 	const timeline = DATA_CACHE.getSync('timeline')
+	const configHash = DATA_CACHE.getSync("configHash")
+
+	if (configHash !== hashObject(settings)) {
+		return true
+	}
 
 	if (getNonPastTimelineItems(timeline).length === 0) {
 		return true

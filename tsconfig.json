@@ -3,7 +3,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "src/**/test_*"
+    "src/**/__tests__/**/*"
   ],
   "compilerOptions": {
     "plugins": [{ "transform": "@magic-works/commonjs-import.meta" }],
