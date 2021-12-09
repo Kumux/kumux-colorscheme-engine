@@ -15,8 +15,8 @@ describe('getConfig', () => {
 
 	it('supports different presets', async () => {
 		const finalConfig = await getConfig({
-				"preset": "dracula"
+				"preset": "dracumux"
 			})
-		expect(finalConfig.nightBackground).toEqual(PRESETS.dracula.nightBackground)
+		expect(finalConfig.nightBackground).toEqual(PRESETS.dracumux.nightBackground)
 	})
 })

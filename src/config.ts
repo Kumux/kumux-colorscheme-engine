@@ -13,7 +13,7 @@ export default async function getConfig(settings: SettingsType): Promise<Setting
 		...currentSystemConfig,
 	}
 
-	if (configValue.preset !== null) {
+	if (configValue.preset != null) {
 		configValue = {
 			...configValue,
 			...PRESETS[configValue.preset]

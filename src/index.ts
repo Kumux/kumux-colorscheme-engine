@@ -12,10 +12,12 @@ import fetch from 'cross-fetch';
 import getConfig from "./config";
 
 
-export type SettingsType = {
+export type PresetType = {
 	dayBackground?: string,
 	nightBackground?: string,
-	preset: string | null,
+}
+export type SettingsType = PresetType & {
+	preset?: string | null,
 }
 type ApplicationType = string
 type TimelineItem = [number, string]

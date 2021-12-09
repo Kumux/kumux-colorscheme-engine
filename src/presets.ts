@@ -1,6 +1,6 @@
-import {SettingsType} from "."
+import {PresetType} from "."
 
-const PRESETS: {[key: string]: SettingsType} = {
+const PRESETS: {[key: string]: PresetType} = {
 	"onedark": {
 		"dayBackground": "#282c34",
 		"nightBackground": "#38272c",
@@ -12,10 +12,10 @@ const PRESETS: {[key: string]: SettingsType} = {
 		"nightBackground": "#282828",
 	},
 
-	// Dracula
-	"dracula": {
+	// Dracula inspired
+	"dracumux": {
 		"dayBackground": "#282A37",
-		"nightBackground": "#2c2122",
+		"nightBackground": "#372828",
 	},
 }
 
