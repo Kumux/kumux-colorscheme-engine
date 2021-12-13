@@ -17,6 +17,13 @@ const PRESETS: {[key: string]: PresetType} = {
 		"dayBackground": "#282A37",
 		"nightBackground": "#372828",
 	},
+
+	// Based on solarized
+	"solarized": {
+		"dayBackground": "#002b36",
+		"nightBackground": "#372f28",
+	}
+
 }
 
 export default PRESETS
