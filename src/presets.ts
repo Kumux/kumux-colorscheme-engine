@@ -1,6 +1,11 @@
 import {PresetType} from "."
 
 const PRESETS: {[key: string]: PresetType} = {
+	"default": {
+		"dayBackground": "#282c34",
+		"nightBackground": "#38272c",
+	},
+
 	"onedark": {
 		"dayBackground": "#282c34",
 		"nightBackground": "#38272c",

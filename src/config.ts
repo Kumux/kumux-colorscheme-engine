@@ -3,9 +3,11 @@ import {SettingsType} from "."
 import initConfig from 'application-config'
 import getLocationFromTimezone from './timezoneToLocation'
 import getTimeZone from './getTimeZone'
+import DEFAULT_CONFIG from './defaultConfig'
+import fs from 'fs'
 
 
-const systemConfig = initConfig("kumux")
+export const systemConfig = initConfig("kumux")
 
 type FinalSettingsType = SettingsType & {
 	geoLocation: {
@@ -28,6 +30,10 @@ export default async function getConfig(settings: SettingsType): Promise<FinalSe
 			...configValue,
 			...PRESETS[configValue.preset],
 		}
+	}
+
+	if (!fs.existsSync(systemConfig.filePath)) {
+		await systemConfig.write(DEFAULT_CONFIG)
 	}
 
 	return configValue

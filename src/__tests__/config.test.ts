@@ -1,16 +1,26 @@
-import getConfig from '../config'
+import getConfig, { systemConfig } from '../config'
 import PRESETS from '../presets'
 import getTimeZone_ from '../getTimeZone'
+import DEFAULT_CONFIG from '../defaultConfig'
 
 jest.mock('application-config', () => () => ({
 	read: () => ({}),
+	write: jest.fn(),
+	filePath: "foobar",
 }))
 jest.mock('../getTimeZone', () => jest.fn())
+jest.mock('fs', () => ({
+	existsSync: (path) => path === "foobar"
+}))
 
 const getTimeZone = getTimeZone_ as jest.Mock
 getTimeZone.mockReturnValue('Asia/Tomsk')
 
 describe('getConfig', () => {
+	beforeEach(() => {
+		systemConfig.filePath = "foobar"
+	})
+
 	it('allows the use of presets', async () => {
 		const finalConfig = await getConfig({
 				"preset": "nordbox"
@@ -47,5 +57,18 @@ describe('getConfig', () => {
 			latitude: 6.45,
 			longitude: 3.4,
 		})
+	})
+
+	it('creates the confiuration file if it doesnt exist', async () => {
+		systemConfig.filePath = "baz"
+		await getConfig({})
+
+		expect(systemConfig.write).toHaveBeenCalledWith(DEFAULT_CONFIG)
+	})
+
+	it('does not write config file if it already exists', async () => {
+		await getConfig({})
+
+		expect(systemConfig.write).not.toHaveBeenCalled()
 	})
 })
