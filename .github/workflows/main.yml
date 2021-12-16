@@ -11,3 +11,5 @@ jobs:
         run: npm run test
       - name: Eslint
         run: npm run lint:ci
+      - name: Type check
+        run: npm run typecheck
