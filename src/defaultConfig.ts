@@ -1,5 +1,5 @@
 const DEFAULT_CONFIG = {
-	"preset": "default",
+    'preset': 'default',
 }
 
-export default DEFAULT_CONFIG;
+export default DEFAULT_CONFIG
