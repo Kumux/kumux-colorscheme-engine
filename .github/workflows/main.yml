@@ -8,4 +8,4 @@ jobs:
       - name: Run tests
         run: npm ci --ignore-scripts
       - name: Jest
-        run: npm run jest
+        run: npm run test
