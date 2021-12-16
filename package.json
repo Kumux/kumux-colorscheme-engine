@@ -9,6 +9,7 @@
     "build": "tsc",
     "lint:ci": "eslint src --max-warnings=0",
     "lint:fix": "eslint --fix src",
+    "typecheck": "tsc --noEmit",
     "prepublish": "npm run test && npm run build"
   },
   "repository": {
