@@ -6,4 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run: npm ci
+        run: npm ci --ignore-scripts
+      - name: Jest
+        run: npm run jest
