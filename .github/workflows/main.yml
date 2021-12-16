@@ -9,3 +9,5 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Jest
         run: npm run test
+      - name: Eslint
+        run: npm run lint:ci
