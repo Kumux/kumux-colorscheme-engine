@@ -2,6 +2,8 @@
 
 # kumux-colorscheme-engine
 
+[Install for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=kumux.kumux-theme)
+
 Kumux is the world's first dynamic circadian color scheme for code editors and other software.
 
 
