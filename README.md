@@ -169,7 +169,7 @@ Afterwards, call this function to retrieve your theme based on one of the templa
 Here's how you'd generate a vscode theme:
 
 ```typescript
-	const colorScheme = await getColorschemeSnapshot("vscode", {})
+const colorScheme = await getColorschemeSnapshot("vscode", {})
 ```
 
 Keep in mind that the theme is only updated once you call this function again. In order to get smooth
