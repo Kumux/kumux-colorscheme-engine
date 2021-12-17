@@ -12,7 +12,7 @@ Kumux is the world's first dynamic circadian color scheme for code editors and o
 As software developers, we spend most of our waking hours in front of the computer.
 
 You might be aware that artificial light, and light emitted by computer and smartphone screens
-can harm our sleep quality. Reduced exposure to artificial light and extended exposure to artificial light,
+can harm our sleep quality. Reduced exposure to natual light and extended exposure to artificial light,
 (especially at night) has been associated with stress, reduced productivity, eye strain and sleep disruption.
 
 Eye strain and loss of productivity can also be caused by inadequate contrast levels or inadequate visibility
