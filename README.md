@@ -175,6 +175,10 @@ const colorScheme = await getColorschemeSnapshot("vscode", {})
 Keep in mind that the theme is only updated once you call this function again. In order to get smooth
 transitions, call this function every couple seconds and update the theme variables in your application.
 
+#### List of available templates
+
+To see what templates are available (other than `"vscode"`), look at this folder https://github.com/Kumux/kumux-colorscheme-engine/tree/main/templates
+
 ### Get configuration location
 
 ```typescript
