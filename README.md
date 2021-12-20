@@ -7,7 +7,7 @@
 Kumux is the world's first dynamic circadian color scheme for code editors and other software.
 
 
-## Why we created Kumux color scheme
+## Why we created the Kumux color scheme
 
 As software developers, we spend most of our waking hours in front of the computer.
 
@@ -28,6 +28,8 @@ Blue light is boosted around solar noon in order to improve your productivity.
 
 The contrast levels change during the day based on the amount and color of daylight available. This helps ensure
 adequate visibility throughout the day while also preparing you to wind down by the end of the day.
+
+Kumux color scheme always adapts your colors and contrast dynamically based on the current position of the sun in your geo-location.
 
 ## Features
 
