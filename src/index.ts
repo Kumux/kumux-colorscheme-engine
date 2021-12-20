@@ -71,12 +71,13 @@ export const updateThemeData = async (settings: SettingsType) => {
   })
   const themeDataResponseJSON = await themeDataResponse.json()
 
-  const { themeData } = themeDataResponseJSON
+  const { themeData, kumux } = themeDataResponseJSON
   const { timeline, themeVariables } = themeData
   DATA_CACHE.putSync('lastFetch', moment().unix())
   DATA_CACHE.putSync('configHash', currentConfigHash)
   DATA_CACHE.putSync('timeline', timeline)
   DATA_CACHE.putSync('themeVariables', themeVariables)
+  DATA_CACHE.putSync('kumux', kumux)
 
   return null
 }
