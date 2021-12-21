@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/3704904/146818603-a79a4cb1-cbbe-488d-8126-c4a188f3c3fd.png" height="400" />
+<img src="https://user-images.githubusercontent.com/3704904/146391566-35621fb7-63c8-4ab1-8a44-2d40302a57cf.png" height="400" />
 
 
 # kumux-colorscheme-engine
