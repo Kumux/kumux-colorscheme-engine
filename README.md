@@ -205,3 +205,34 @@ This color scheme is under continuous development and new configurations are bei
  “Recommendations for Healthy Daytime, Evening, and Night-Time Indoor Light Exposure,” 2020, doi: 10.20944/PREPRINTS202012.0037.V1.
 https://www.researchgate.net/publication/347626355_Recommendations_for_Healthy_Daytime_Evening_and_Night-Time_Indoor_Light_Exposure 
 
+
+## Usage
+
+### Configuration
+
+#### Changing contrast levels
+
+In order to change contrast level, set the settings value `contrast`. This value has a separate value for `day` and `night` in order to allow using lower contrast at night and higher contrast at day.
+
+Here's an example of how this setting can be configured:
+
+```json
+contrast: {
+	day: "medium",
+	night: "low"
+}
+```
+
+The possible contrast values are: `"minimum"`, `"lowest"`, `"lower"`, `"low"`, `"medium"`, `"high"`, `"higher"`, `"highest"`, and `"maximum"`.
+
+You can also configure the contrast levels by specifying contrast ratios as numbers between 1 and 21.
+Those levels correspond to the theoretical minimum and maximum of contrast levels.
+Each color has a contrast level of 1 with itself.
+Black and white has a contrast level of 21 with each other.
+
+```json
+contrast: {
+	day: 6,
+	night: 4.5
+}
+```

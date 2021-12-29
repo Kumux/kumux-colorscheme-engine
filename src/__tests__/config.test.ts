@@ -6,11 +6,15 @@ import _cache from 'persistent-cache'
 import faker from 'faker'
 import { version as npmPackageVersion } from '../../package.json'
 
-jest.mock('application-config', () => () => ({
-  read: () => ({}),
-  write: jest.fn(),
-  filePath: 'foobar',
-}))
+jest.mock('application-config', () => () => {
+  const initConfig = jest.fn()
+  initConfig.mockReturnValue(initConfig)
+  initConfig.read = jest.fn()
+  initConfig.write = jest.fn()
+  initConfig.filePath = 'foobar'
+
+  return initConfig
+})
 jest.mock('../getTimeZone', () => jest.fn())
 jest.mock('fs', () => ({
   existsSync: (path) => path === 'foobar',
@@ -107,5 +111,54 @@ describe('getConfig', () => {
     await getConfig({})
 
     expect(systemConfig.write).not.toHaveBeenCalled()
+  })
+
+  it('has correct default contrast values', async () => {
+    const finalConfig = await getConfig({})
+
+    expect(finalConfig.contrast).toEqual({
+      day: 6,
+      night: 4.5,
+    })
+  })
+
+  it('allows overriding night contrast independently', async () => {
+    const finalConfig = await getConfig({
+      contrast: {
+        night: 'medium',
+      },
+    })
+
+    expect(finalConfig.contrast).toEqual({
+      day: 6,
+      night: 6,
+    })
+  })
+
+  it('allows overriding day contrast independently', async () => {
+    const finalConfig = await getConfig({
+      contrast: {
+        day: 'high',
+      },
+    })
+
+    expect(finalConfig.contrast).toEqual({
+      night: 4.5,
+      day: 7,
+    })
+  })
+
+  it('allows overriding contrast through the system level config', async () => {
+    systemConfig.read.mockReturnValue({
+      contrast: {
+        day: 'high',
+      },
+    })
+    const finalConfig = await getConfig({})
+
+    expect(finalConfig.contrast).toEqual({
+      night: 4.5,
+      day: 7,
+    })
   })
 })

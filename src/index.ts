@@ -9,14 +9,7 @@ import moment from 'moment'
 // @ts-ignore
 import cache from 'persistent-cache'
 import fetch from 'cross-fetch'
-import getConfig from './config'
-import * as Sentry from '@sentry/node'
-import '@sentry/tracing'
-
-Sentry.init({
-  dsn: 'https://530d556fe4f94451b35d0f2631175fac@o1091251.ingest.sentry.io/6110593',
-  tracesSampleRate: 1.0,
-})
+import getConfig, { ContrastLevel } from './config'
 
 export type PresetType = {
   dayBackground?: string
@@ -25,6 +18,10 @@ export type PresetType = {
 
 export type SettingsType = PresetType & {
   preset?: string | null
+  contrast?: {
+    day?: keyof ContrastLevel | number
+    night?: keyof ContrastLevel | number
+  }
 }
 
 type ApplicationType = string

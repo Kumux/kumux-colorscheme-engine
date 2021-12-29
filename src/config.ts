@@ -25,6 +25,43 @@ type FinalSettingsType = SettingsType & {
   }
   kumux: string
   npmPackageVersion: string
+  contrast: {
+    day: number
+    night: number
+  }
+}
+
+export type ContrastSettingsType = {
+  day: keyof ContrastLevel | number
+  night: keyof ContrastLevel | number
+}
+
+export enum ContrastLevel {
+  // The minimum is 1.5 because the theoretical minimum, 1, would by definition
+  // result in illegible text.
+  minimum = 1.5,
+  lowest = 2,
+  lower = 3,
+  low = 4.5,
+  medium = 6,
+  high = 7,
+  higher = 9,
+  highest = 15,
+
+  // The theoretical maximum (21) would always result in black and white text,
+  // rendering this color scheme useless as there would not be any effect left
+  maximum = 18,
+}
+
+const parseContrast = (contrast: ContrastSettingsType) => {
+  return {
+    day: Number.isFinite(contrast.day)
+      ? contrast.day
+      : ContrastLevel[contrast.day],
+    night: Number.isFinite(contrast.night)
+      ? contrast.night
+      : ContrastLevel[contrast.night],
+  }
 }
 
 export default async function getConfig(
@@ -37,6 +74,11 @@ export default async function getConfig(
     ...PRESETS['onedark'],
     ...settings,
     ...currentSystemConfig,
+    contrast: parseContrast({
+      ...DEFAULT_CONFIG.contrast,
+      ...currentSystemConfig?.contrast,
+      ...settings.contrast,
+    }),
     kumux,
     npmPackageVersion,
   }
