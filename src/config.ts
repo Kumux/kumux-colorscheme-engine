@@ -8,6 +8,7 @@ import fs from 'fs'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import cache from 'persistent-cache'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { version as npmPackageVersion } from '../package.json'
 
@@ -21,9 +22,9 @@ type FinalSettingsType = SettingsType & {
   geoLocation: {
     latitude: number
     longitude: number
-  },
-  kumux: string,
-  npmPackageVersion: string,
+  }
+  kumux: string
+  npmPackageVersion: string
 }
 
 export default async function getConfig(
@@ -37,7 +38,7 @@ export default async function getConfig(
     ...settings,
     ...currentSystemConfig,
     kumux,
-    npmPackageVersion
+    npmPackageVersion,
   }
 
   if (configValue.preset != null) {

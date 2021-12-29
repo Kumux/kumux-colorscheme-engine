@@ -47,7 +47,7 @@ describe('getConfig', () => {
     expect(finalConfig.dayBackground).toEqual(PRESETS.nordbox.dayBackground)
   })
 
- it('gets kumux user id value from persistent cache', async () => {
+  it('gets kumux user id value from persistent cache', async () => {
     FAKE_CACHE.kumux = faker.git.commitSha() // just any fake hash really
     cache.getSync.mock
     const finalConfig = await getConfig({
@@ -56,7 +56,7 @@ describe('getConfig', () => {
     expect(finalConfig.kumux).toEqual(FAKE_CACHE.kumux)
   })
 
- it('gets package version id from package.json', async () => {
+  it('gets package version id from package.json', async () => {
     const finalConfig = await getConfig({
       preset: 'nordbox',
     })
@@ -71,7 +71,6 @@ describe('getConfig', () => {
       PRESETS.dracumux.nightBackground
     )
   })
-
 
   it('passes location correctly 1', async () => {
     getTimeZone.mockReturnValue('America/Recife')
