@@ -10,14 +10,23 @@ import moment from 'moment'
 import cache from 'persistent-cache'
 import fetch from 'cross-fetch'
 import getConfig from './config'
+import * as Sentry from '@sentry/node'
+import '@sentry/tracing'
+
+Sentry.init({
+  dsn: 'https://e82ffd8b2fe94d2fa7776295dda8388f@o1091251.ingest.sentry.io/6107984',
+  tracesSampleRate: 1.0,
+})
 
 export type PresetType = {
   dayBackground?: string
   nightBackground?: string
 }
+
 export type SettingsType = PresetType & {
   preset?: string | null
 }
+
 type ApplicationType = string
 type TimelineItem = [number, string]
 type Timeline = Array<TimelineItem>
