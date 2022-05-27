@@ -396,37 +396,38 @@ const TIMEZONE_LOCATION_MAP = {
   'Indian/Mauritius': [-20.2759451, 57.5703566],
   'Indian/Mayotte': [-12.823048, 45.1520755],
   'Indian/Reunion': [-21.1307379, 55.5364801],
-  // TODO: Pacific/Bougainville
-  // TODO: Pacific/Chatham
-  // TODO: Pacific/Chuuk
-  // TODO: Pacific/Easter
-  // TODO: Pacific/Efate
-  // TODO: Pacific/Fakaofo
-  // TODO: Pacific/Fiji
+  'Pacific/Bougainville': [-6.445591, 155.509925],
+  'Pacific/Chatham': [-43.997025, -176.515568],
+  'Pacific/Chuuk': [7.342055, 151.704463],
+  'Pacific/Easter': [-27.113958, -109.352413],
+  'Pacific/Fakaofo': [-9.388268, -171.22316],
+  'Pacific/Fiji': [-17.7373084, 178.065032],
   'Pacific/Galapagos': [-0.6288151, -90.3638752],
   'Pacific/Gambier': [-23.346037, -134.4805901],
   'Pacific/Guadalcanal': [-9.5984209, 160.1485117],
   'Pacific/Guam': [13.4501257, 144.757551],
-  // TODO: Pacific/Honolulu
+  'Pacific/Kiritimati': [1.85948, -157.85855],
+  'Pacific/Kosrae': [1.1755, 173.01],
+  'Pacific/Kwajalein': [9.082033, 167.959],
+  'Pacific/Marquesas': [-9.9, -139.8],
+  'Pacific/Midway': [-8.5, -171.75],
+  'Pacific/Nauru': [-0.547, 166.917],
+  'Pacific/Niue': [-19.05, -169.867],
+  'Pacific/Norfolk': [-29.0333, 167.95],
+  'Pacific/Palau': [7.5, 134.633],
+  'Pacific/Pitcairn': [-24.7, -127.4],
+  'Pacific/Pohnpei': [6.967, 158.25],
+  'Pacific/Rarotonga': [-20.25, -158.067],
+  'Pacific/Saipan': [15.2, 145.75],
+  'Pacific/Tahiti': [-17.55, -149.567],
+  'Pacific/Tongatapu': [-21.13, -175.2],
+  'Pacific/Wake': [19.28, 166.633],
+  'Pacific/Wallis': [-13.3, -176.2],
+
+  // TODO: Pacific/Efate
   // TODO: Pacific/Kanton
-  // TODO: Pacific/Kiritimati
-  // TODO: Pacific/Kosrae
-  // TODO: Pacific/Kwajalein
-  // TODO: Pacific/Marquesas
-  // TODO: Pacific/Midway
-  // TODO: Pacific/Nauru
-  // TODO: Pacific/Niue
-  // TODO: Pacific/Norfolk
-  // TODO: Pacific/Palau
-  // TODO: Pacific/Pitcairn
-  // TODO: Pacific/Pohnpei
-  // TODO: Pacific/Rarotonga
-  // TODO: Pacific/Saipan
-  // TODO: Pacific/Tahiti
-  // TODO: Pacific/Tongatapu
-  // TODO: Pacific/Wake
-  // TODO: Pacific/Wallis
-}
+  // TODO: Pacific/Honolulu
+};
 
 export default function getLocationFromTimezone(timezoneName: string) {
   if (!(timezoneName in TIMEZONE_LOCATION_MAP)) {
